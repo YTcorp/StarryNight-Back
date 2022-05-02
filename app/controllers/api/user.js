@@ -7,7 +7,7 @@ const ApiError = require('../../errors/apiError');
 
 const User = require('../../models/user');
 
-const { createToken, disableToken } = require('../../services/tokensManager');
+const { createToken } = require('../../services/tokensManager');
 
 const userController = {
     /**
@@ -83,8 +83,6 @@ const userController = {
                 const output = await User.delete(id);
                 // Delete the stored token from client side upon log out
                 res.removeHeader('Authorization');
-                // Disable user token by putting in redis DB
-                disableToken(req);
                 return res.status(200).json(output);
             }
             return next(new ApiError('Password is not correct', { statusCode: 403 }));
@@ -130,11 +128,9 @@ const userController = {
         return next(new ApiError('wrong email or password', { statusCode: 403 }));
     },
 
-    async logout(req, res) {
+    async logout(_, res) {
         // Delete the stored token from client side upon log out
         res.removeHeader('Authorization');
-        // Disable user token by putting in redis DB
-        disableToken(req);
         res.status(200).json({ logout: true });
     },
 };

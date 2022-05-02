@@ -4,7 +4,14 @@
 const jwt = require('jsonwebtoken');
 // eslint-disable-next-line no-unused-vars
 const debug = require('debug')('security:JWToken');
-const { seekToken, checkDisabledToken, createToken } = require('../services/tokensManager');
+
+const {
+    seekToken,
+    checkDisabledToken,
+    createToken,
+    disableToken,
+} = require('../services/tokensManager');
+
 const ApiError = require('../errors/apiError');
 
 const { JWTOKEN_KEY } = process.env;
@@ -28,6 +35,8 @@ exports.checkJWT = async (req, res, next) => {
             }
             // We store the decoded token in the request object to be able to use it in the next middleware
             req.decoded = decoded;
+            // Disable user token by putting in redis DB
+            disableToken(req);
             // Creation of a new token
             const newToken = createToken(decoded.user);
             // Add the token to the response header
