@@ -15,8 +15,8 @@ router
      * POST /v1/api/user/
      * @tags User
      * @summary Insert a user
-     * @param {User} request.body.required Express req.object
-     * @return {User} 200 - success response - application/json
+     * @param {insertUser} request.body.required Express req.object
+     * @return {UserOutput} 200 - success response - application/json
      * @return {ApiError} 400 - Bad Request : Input data is not in the valid format - application/json
      * @return {ApiError} 400 - Bad Request : This User new entry is not unique - application/json
      */
@@ -26,7 +26,7 @@ router
      * @tags User
      * @summary Select user's profil details by its id (in the token)
      * @security BearerAuth
-     * @return {User} 200 - success response - application/json
+     * @return {UserOutput} 200 - success response - application/json
      * @return {ApiError} 401 - Unauthorized : Authentification needed - application/json
      * @return {ApiError} 404 - User not found for this id - application/json
      */
@@ -36,8 +36,8 @@ router
      * @tags User
      * @summary Update user by its id (in the token)
      * @security BearerAuth
-     * @param {User} request.body identifier
-     * @return {User} 200 - success response - application/json
+     * @param {updateUser} request.body.required Express req.object
+     * @return {UserOutput} 200 - success response - application/json
      * @return {ApiError} 401 - Unauthorized : Authentification needed - application/json
      * @return {ApiError} 400 - Bad Request : Input data is not in the valid format - application/json
      * @return {ApiError} 404 - User not found for this id - application/json
@@ -55,6 +55,7 @@ router
      * @tags User
      * @summary Delete user by its id (in the token)
      * @security BearerAuth
+     * @param {deleteUser} request.body.required Express req.object
      * @return {boolean} 200 - success response - application/json
      * @return {ApiError} 401 - Unauthorized : Authentification needed - application/json
      * @return {ApiError} 404 - User not found for this id - application/json
@@ -68,7 +69,7 @@ router
      * POST /v1/api/user/login
      * @tags User
      * @summary User send his email and password to login and get back a token
-     * @param {Authentification} request.body Express req.object
+     * @param {UserLogin} request.body.required Express req.object
      * @return {boolean} 200 - success response - application/json AND a token in the header
      * @return {ApiError} 404 - User not found for this data (email) - application/json
      * @return {ApiError} 403 - Forbidden : Wrong Email or password - application/json

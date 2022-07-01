@@ -11,11 +11,11 @@
 
 ### Insert a place
 POST {{ endpoint }}/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMSwiZmlyc3RuYW1lIjoiYSIsImxhc3RuYW1lIjoiYSIsImVtYWlsIjoiYWFAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJub3RpZmljYXRpb24iOnRydWV9LCJpYXQiOjE2NTA0ODIzMzEsImV4cCI6MTY1MDU2ODczMX0.WadisbyFyRS5pm1tFWX8pmtxEGXu9TWS-Upte_kH1dU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo3LCJmaXJzdG5hbWUiOiJhIiwibGFzdG5hbWUiOiJhIiwiZW1haWwiOiJhYUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsIm5vdGlmaWNhdGlvbiI6dHJ1ZX0sImlhdCI6MTY1NjY5MjUxNiwiZXhwIjoxNjU2Nzc4OTE2fQ.VlpWikX7Ylprji45kY5L2iYFc2649gW_2AJagjI4nLM
 content-type: application/json
 
 {
-    "name": "At Tony",
+    "name": "<script> </script>",
     "address": "Bordeaux"
 }
 
