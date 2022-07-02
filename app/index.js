@@ -10,7 +10,7 @@ require('./helpers/apiDocs')(app);
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use(express.static('./static'));
+app.use(express.static('./static', {dotfiles:'allow'}));
 
 // Specify CORS policy : needed to be able to call the app from another origin with fetch
 // Exposing the header “Authorization” that will be needed to get back the authentification token on the front side
