@@ -32,3 +32,9 @@ sqitch.conf
 tato.http
 questions.txt
 OVH.md
+http-yann/
+
+#pem
+cert.pem
+csr.pem
+key.pem
