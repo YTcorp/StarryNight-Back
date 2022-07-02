@@ -38,3 +38,4 @@ http-yann/
 cert.pem
 csr.pem
 key.pem
+**/*.well-known
