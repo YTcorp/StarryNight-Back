@@ -13,7 +13,7 @@ const config = {
 
 if (process.env.NODE_ENV === 'production') {
     // This is a special configuration for the Heroku production version
-    // It will avoir errors messages concerning the SSL
+    // It will avoid errors messages concerning the SSL
     config.ssl = {
         rejectUnauthorized: false,
     };
