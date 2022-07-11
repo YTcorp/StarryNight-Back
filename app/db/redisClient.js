@@ -1,14 +1,18 @@
-const debug = require('debug')('Redis');
+const debug = require('debug')('db:Redis');
 const { createClient } = require('redis');
 
 const rdClient = createClient();
 
-const connect = async () => {
-    await rdClient.connect();
-    debug('RedisClient connected');
+const redisConnect = async () => {
+    try {
+        await rdClient.connect();
+        debug('RedisClient connected');
+    } catch (error) {
+        debug(`RedisClient ERROR => ${error}`);
+    }
 };
 
 module.exports = {
-    connect,
+    redisConnect,
     rdClient,
 };
