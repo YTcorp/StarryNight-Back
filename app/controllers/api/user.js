@@ -12,7 +12,7 @@ const { createToken, disableToken } = require('../../services/tokensManager');
 const userController = {
     /**
      * User
-     * @typedef {object} User
+     * @typedef {object} UserOutput
      * @property {integer} id - User's id
      * @property {string} firstname - User's firstname
      * @property {string} lastname - User's lastname
@@ -20,10 +20,34 @@ const userController = {
      * @property {boolean} notification - User's authorisation to get email notifications
      */
     /**
-     * Authentification
-     * @typedef {object} Authentification
-     * @property {string} email - Authentication email
-     * @property {string} password - Authentication password
+     * insertUser
+     * @typedef {object} insertUser
+     * @property {string} firstname - User's firstname
+     * @property {string} lastname - User's lastname
+     * @property {string} email - User's email
+     * @property {string} password - User's password
+     * @property {boolean|null} notification - User's authorisation to get email notifications
+     */
+    /**
+     * updateUser
+     * @typedef {object} updateUser
+     * @property {string|null} firstname - User's firstname
+     * @property {string|null} lastname - User's lastname
+     * @property {string|null} email - User's email
+     * @property {string} oldPassword - User's password
+     * @property {string|null} newPassword - User's password
+     * @property {boolean|null} notification - User's authorisation to get email notifications
+     */
+    /**
+     * deleteUser
+     * @typedef {object} deleteUser
+     * @property {string} password - user's password
+     */
+    /**
+     * UserLogin
+     * @typedef {object} UserLogin
+     * @property {string} email - User's email
+     * @property {string} password - User's password
      */
     /**
      * Api controller to get one user myth by its ID.

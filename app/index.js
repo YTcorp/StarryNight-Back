@@ -1,16 +1,18 @@
 const path = require('path');
 const express = require('express');
 const cors = require('cors');
-
 const router = require('./routers');
 
+// Creation of an express application
 const app = express();
+// Providing the application to express-jsdoc-swagger to generate a documentation of the API
 require('./helpers/apiDocs')(app);
-
+// Setting 'pug' as the view engine that will generate the HTML of the backoffice
 app.set('view engine', 'pug');
+// Setting the directory where pug's views are located
 app.set('views', path.join(__dirname, 'views'));
-
-app.use(express.static('./static'));
+// Middleware defining the static directory providing direct access to datas (images, css, js)
+app.use(express.static('./static', { dotfiles: 'allow' }));
 
 // Specify CORS policy : needed to be able to call the app from another origin with fetch
 // Exposing the header “Authorization” that will be needed to get back the authentification token on the front side

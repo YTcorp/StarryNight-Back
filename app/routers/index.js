@@ -4,8 +4,11 @@ const { Router } = require('express');
 const apiRouter = require('./api');
 const backofficeRouter = require('./backoffice');
 const errorHandler = require('../middlewares/errorHandler');
+const { sanitizeBody } = require('../middlewares/sanitizer');
 
 const router = Router();
+
+router.use(sanitizeBody);
 
 router.use('/api', apiRouter);
 

@@ -1,9 +1,19 @@
-const debug = require('debug')('Express:Server');
+const debug = require('debug')('Node:Server');
 const http = require('http');
+
+// const https = require('https');
+// const fs = require('fs');
+
+// const httpsOptions = {
+//   key: fs.readFileSync('key.pem'),
+//   cert: fs.readFileSync('cert.pem')
+// };
+
 require('dotenv').config();
 
 const app = require('./app');
-const redisClient = require('./app/db/redisClient');
+const { redisConnect } = require('./app/db/redisClient');
+const { pgConnect } = require('./app/db/pgPool');
 
 const PORT = process.env.PORT || 3000;
 
@@ -12,10 +22,14 @@ console.log('process.env.NODE_ENV = ', process.env.NODE_ENV);
 
 const server = http.createServer(app);
 
-// I need my redis client to be connected to my http server before doing queries, so I use then. We use a pool
-// with pg, we could do the same but it's okay to let it like that. For a Client pg we should do it to.
-redisClient.connect().then(() => {
-    server.listen(PORT, () => {
-        debug(`✅ Server listening on http://localhost:${PORT} ✅`);
+// I need the databases to be connected to my http server before doing queries :
+// First we connect the pg Pool of clients
+pgConnect().then(() => {
+    // Secondly we connect the redis client
+    redisConnect().then(() => {
+        // Then we start the server after the databases are connected
+        server.listen(PORT, () => {
+            debug(`✅ Server listening on http://localhost:${PORT} ✅`);
+        });
     });
 });

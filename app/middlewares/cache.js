@@ -110,7 +110,7 @@ const cache = {
             }
             originalJson(data);
         };
-        // We empty the array
+
         next();
     },
 };
