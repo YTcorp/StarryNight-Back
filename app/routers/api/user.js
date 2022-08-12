@@ -7,6 +7,7 @@ const security = require('../../middlewares/security');
 const validator = require('../../middlewares/validator');
 const updateUserSchema = require('../../schemas/updateUser');
 const createUserSchema = require('../../schemas/createUser');
+const loginUserSchema = require('../../schemas/loginUser');
 const { fillCache, flushCache } = require('../../middlewares/cache');
 
 router
@@ -74,7 +75,7 @@ router
      * @return {ApiError} 404 - User not found for this data (email) - application/json
      * @return {ApiError} 403 - Forbidden : Wrong Email or password - application/json
      */
-    .post(asyncWrapper(userController.login));
+    .post(validator('body', loginUserSchema), asyncWrapper(userController.login));
 
 router
     .route('/logout')

@@ -30,6 +30,7 @@ sqitch.conf
 
 #more
 tato.http
+notes.md
 questions.txt
 OVH.md
 **/*http-yann/
