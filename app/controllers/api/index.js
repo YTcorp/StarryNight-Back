@@ -15,6 +15,7 @@ const indexController = {
             message: "Bienvenue sur l'API !",
         });
     },
+
     /**
      * Default API controller to show documentation url.
      * ExpressMiddleware signature
@@ -22,7 +23,7 @@ const indexController = {
      * @param {object} res Express response object
      * @return {object} Route API JSON object
      */
-    home(req, res) {
+    docs(req, res) {
         const fullUrl = `${req.protocol}://${req.get('host')}`;
         return res.status(200).json({
             documentation_url: `${fullUrl}${process.env.API_DOCUMENTATION_ROUTE}`,

@@ -14,7 +14,7 @@ module.exports = {
      * @param {object} res Express response object
      * @return {string} Route API JSON response
      */
-    home(_, res) {
+    docsBack(_, res) {
         res.render('home', { title: 'Starry Night Backoffice Home' });
     },
 };

@@ -23,6 +23,8 @@ const cache = {
     prepare(req) {
         const infos = {};
         const regex = /^\/v1\/api\/(?:([a-z-]+))\//im;
+
+        // this match requires the url to end with a slash /
         // eslint-disable-next-line prefer-destructuring
         infos.entity = req.originalUrl.match(regex)[1];
         if (req.decoded) {

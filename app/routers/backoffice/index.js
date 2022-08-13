@@ -16,7 +16,7 @@ router.use((_, res, next) => {
  * @summary Get backoffice homepage
  * @return {string} 200 - success response - html
  */
-router.get('/', backofficeController.home);
+router.get('/', backofficeController.docsBack);
 
 // By throwing an error, this middleware allows to go inside the 4 parameter middleware inside the index router
 router.use(() => {

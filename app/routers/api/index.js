@@ -36,7 +36,7 @@ router.use((_, res, next) => {
  * @summary All verbs
  * @return {string} 200 - success response - application/json
  */
-router.all('/', indexController.home);
+router.all('/', indexController.docs);
 
 // routes with basic CRUD operations for differents entities
 router.use('/common', commonRouter);

@@ -3,6 +3,8 @@ const express = require('express');
 const cors = require('cors');
 const router = require('./routers');
 
+const { homeController } = require('./controllers');
+
 // Creation of an express application
 const app = express();
 // Providing the application to express-jsdoc-swagger to generate a documentation of the API
@@ -27,6 +29,8 @@ app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 // Parsing the JSON payload to get req.body with data inside
 app.use(express.json());
+
+app.get('/', homeController.home);
 
 app.use('/v1', router);
 

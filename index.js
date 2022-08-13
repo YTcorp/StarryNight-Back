@@ -1,14 +1,6 @@
 const debug = require('debug')('Node:Server');
 const http = require('http');
 
-// const https = require('https');
-// const fs = require('fs');
-
-// const httpsOptions = {
-//   key: fs.readFileSync('key.pem'),
-//   cert: fs.readFileSync('cert.pem')
-// };
-
 require('dotenv').config();
 
 const app = require('./app');
