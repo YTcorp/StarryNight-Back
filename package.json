@@ -30,6 +30,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-sql": "^2.1.0",
     "jest": "^27.5.1",
+    "node-dev": "^7.4.3",
     "prettier": "^2.6.1"
   },
   "dependencies": {
